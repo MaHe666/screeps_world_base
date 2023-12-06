@@ -1,5 +1,6 @@
 // rollup.config.mjs
 import typescript from 'rollup-plugin-typescript2';
+import screeps from "rollup-plugin-screeps";
 
 export default {
     input: 'src/main.ts', // 入口文件路径
@@ -8,7 +9,18 @@ export default {
         format: 'cjs', // CommonJS 格式
     },
     plugins: [
-        typescript() // 使用 TypeScript 插件编译代码
+        typescript(), // 使用 TypeScript 插件编译代码
+        screeps({
+            config: {
+                token: "",
+                protocol: "https",
+                hostname: "screeps.com",
+                port: 443,
+                path: "/",
+                branch: "default"
+            },
+            dryRun: false
+        }
+        )
     ],
-    external: ['lodash'] // 如果您使用了像 lodash 这样的库，请将其列为外部依赖
 };

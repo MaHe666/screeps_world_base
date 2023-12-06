@@ -1,3 +1,3 @@
 export const loop = () => {
-    console.log("HelloWorld")
+    console.log("mahe666")
 }
